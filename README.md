@@ -123,7 +123,5 @@ configs/
   pi/            inputs.conf, Splunk_TA_nix local/inputs.conf, auditd rules, UFW rules
   mac/           inputs.conf, LaunchAgent plist, launch_items.sh, posture.sh
 detections/      one .spl file per alert
-dashboards/      lab_status.xml
-app/homelab_soc/ dashboards and alerts packaged as a Splunk app
 screenshots/     alerts firing, dashboards
 ```

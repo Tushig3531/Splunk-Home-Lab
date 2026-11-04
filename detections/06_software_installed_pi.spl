@@ -1,0 +1,4 @@
+```Software Installed on Pi | MITRE T1072 | every 5 min, last 5 min```
+index=pi_linux sourcetype=dpkg " status installed "
+| rex "status installed (?<package>\S+) (?<version>\S+)"
+| table _time package version

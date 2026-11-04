@@ -1,0 +1,18 @@
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    Anywhere                  
+[ 2] 53                         ALLOW IN    Anywhere                  
+[ 3] 80/tcp                     ALLOW IN    Anywhere                  
+[ 4] 22/tcp                     ALLOW IN    ###            
+[ 5] 53                         ALLOW IN    ###            
+[ 6] 80/tcp                     ALLOW IN    ###           
+[ 7] 443/tcp                    ALLOW IN    ###            
+[ 8] 224.0.0.0/4                DENY IN     Anywhere                  
+[ 9] 5353/udp                   DENY IN     Anywhere                  
+[10] 22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+[11] 53 (v6)                    ALLOW IN    Anywhere (v6)             
+[12] 80/tcp (v6)                ALLOW IN    Anywhere (v6)             
+[13] 5353/udp (v6)              DENY IN     Anywhere (v6)             
+

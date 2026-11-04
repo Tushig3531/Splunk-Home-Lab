@@ -1,0 +1,7 @@
+```New LaunchAgent on Mac | MITRE T1543.001 | every 15 min, last 7 days```
+index=macos sourcetype=macos:launchitems
+| rex max_match=0 "launch_item=\"(?<item>[^\"]+)\""
+| mvexpand item
+| stats min(_time) as first_seen by item
+| where first_seen >= relative_time(now(), "-15m")
+| convert ctime(first_seen)

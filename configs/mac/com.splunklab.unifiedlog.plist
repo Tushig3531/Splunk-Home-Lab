@@ -1,0 +1,14 @@
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"\>
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.splunklab.unifiedlog</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>-c</string>
+    <string>/usr/bin/log stream --style syslog --predicate 'process == "sudo" OR process == "su" OR process == "sshd" OR process == "sshd-session" OR process == "logger" OR process == "sysadminctl" OR process == "dscl" OR process == "dseditgroup" OR process == "screensharingd" OR process == "XProtect"' >> "$HOME/Library/Logs/macos_security.log"</string>
+  </array>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+</dict>
+</plist>

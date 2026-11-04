@@ -1,0 +1,5 @@
+```New Root Access Given | MITRE T1098 | every 5 min, last 5 min```
+(index=pi_linux sourcetype=linux_secure "to group 'sudo'")
+OR (index=pi_linux sourcetype=linux_audit key="sudoers" type=SYSCALL)
+OR (index=macos sourcetype=macos:unified dseditgroup admin)
+| table _time host _raw

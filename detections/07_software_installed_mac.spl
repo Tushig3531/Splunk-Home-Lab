@@ -1,0 +1,5 @@
+```Software Installed on Mac | MITRE T1072 | every 15 min, last 15 min```
+index=macos source="/var/log/install.log" "Installed \""
+| rex "Installed \"(?<software>[^\"]+)\""
+| stats latest(_time) as time by software
+| convert ctime(time)

@@ -1,0 +1,10 @@
+```Device Hitting Blocked Domains a Lot | MITRE T1071.004 | hourly, last 60 min```
+index=dns sourcetype=pihole ("query[" OR "gravity blocked")
+| reverse
+| rex "query\[[^\]]+\]\s+(?<domain>\S+)\s+from\s+(?<device>\S+)"
+| rex "gravity blocked\s+(?<blocked>\S+)"
+| eval domain=coalesce(domain, blocked)
+| streamstats last(device) as device by domain
+| where isnotnull(blocked)
+| stats count as blocked_lookups dc(domain) as domains by device
+| where blocked_lookups >= 50

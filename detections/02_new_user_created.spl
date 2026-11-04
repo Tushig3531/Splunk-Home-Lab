@@ -1,0 +1,7 @@
+```New User Created | MITRE T1136 | every 5 min, last 5 min```
+(index=pi_linux sourcetype=linux_secure "new user: name=")
+OR (index=macos sourcetype=macos:unified sysadminctl ("Creating user record" OR "addUser"))
+| eval device=if(index=="macos","Mac","Pi")
+| stats count as events min(_time) as first_seen values(_raw) as details by device
+| eval details=mvindex(details,0,2)
+| convert ctime(first_seen)
